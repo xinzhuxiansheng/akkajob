@@ -7,13 +7,11 @@ import io.akkajob.worker.config.AkkajobConfig;
 import io.akkajob.worker.constant.WorkerConstant;
 import io.akkajob.worker.dto.ClusterDTO;
 import io.akkajob.worker.util.HttpClientUtil;
-import io.akkajob.worker.util.ResultUtil;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.client.config.RequestConfig;
 import org.springframework.util.CollectionUtils;
 
-import java.io.IOException;
 import java.net.UnknownHostException;
 import java.util.List;
 import java.util.Objects;

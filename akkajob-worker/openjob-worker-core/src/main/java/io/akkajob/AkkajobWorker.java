@@ -5,6 +5,9 @@ import io.akkajob.worker.config.AkkajobConfig;
 import io.akkajob.worker.constant.WorkerConstant;
 import io.akkajob.worker.init.WorkerActorSystem;
 import io.akkajob.worker.init.WorkerConfig;
+import io.akkajob.worker.init.WorkerContext;
+import io.akkajob.worker.init.WorkerRegister;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 
@@ -13,16 +16,20 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
+@Getter
 public class AkkajobWorker {
 
     private final WorkerConfig workerConfig;
     private final WorkerActorSystem workerActorSystem;
     private final WorkerRegister workerRegister;
+    private final WorkerContext workerContext;
 
 
     public AkkajobWorker(){
         this.workerConfig = new WorkerConfig();
         this.workerActorSystem = new WorkerActorSystem();
+        this.workerRegister = new WorkerRegister(this);
+        this.workerContext = new WorkerContext();
     }
 
     /**

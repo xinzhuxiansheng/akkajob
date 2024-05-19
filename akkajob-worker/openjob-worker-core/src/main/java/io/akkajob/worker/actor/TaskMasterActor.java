@@ -1,21 +1,12 @@
 package io.akkajob.worker.actor;
 
 import akka.actor.AbstractActor;
-import io.openjob.common.actor.BaseActor;
-import io.openjob.common.constant.CommonConstant;
-import io.openjob.common.constant.JobInstanceStopEnum;
-import io.openjob.common.request.*;
-import io.openjob.common.response.Result;
-import io.openjob.common.response.WorkerInstanceTaskChildListPullResponse;
-import io.openjob.common.response.WorkerInstanceTaskListPullResponse;
-import io.openjob.common.response.WorkerResponse;
-import io.openjob.worker.dto.JobInstanceDTO;
-import io.openjob.worker.master.MapReduceTaskMaster;
-import io.openjob.worker.master.TaskMaster;
-import io.openjob.worker.master.TaskMasterFactory;
-import io.openjob.worker.master.TaskMasterPool;
-import io.openjob.worker.request.ContainerBatchTaskStatusRequest;
-import io.openjob.worker.request.ProcessorMapTaskRequest;
+import io.akkajob.common.actor.BaseActor;
+import io.akkajob.common.response.Result;
+import io.akkajob.common.response.WorkerResponse;
+import io.akkajob.worker.dto.JobInstanceDTO;
+import io.akkajob.worker.request.ContainerBatchTaskStatusRequest;
+import io.akkajob.worker.request.ProcessorMapTaskRequest;
 
 import java.util.Objects;
 import java.util.Optional;

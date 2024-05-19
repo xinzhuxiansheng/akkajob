@@ -1,6 +1,6 @@
 package io.akkajob.worker.request;
 
-import io.openjob.common.util.TaskUtil;
+import io.akkajob.common.util.TaskUtil;
 import lombok.Data;
 
 import java.io.Serializable;

@@ -3,13 +3,8 @@ package io.akkajob.worker.actor;
 import akka.actor.AbstractActor;
 import io.akkajob.common.actor.BaseActor;
 import io.akkajob.common.response.Result;
-import io.akkajob.worker.request.*;
-import io.openjob.common.response.WorkerResponse;
-import io.openjob.common.util.KryoUtil;
-import io.openjob.worker.container.TaskContainer;
-import io.openjob.worker.container.TaskContainerFactory;
-import io.openjob.worker.container.TaskContainerPool;
-import io.openjob.worker.context.JobContext;
+import io.akkajob.common.response.WorkerResponse;
+import io.akkajob.worker.context.JobContext;
 import io.akkajob.worker.request.*;
 
 import java.util.Objects;

@@ -1,24 +1,20 @@
 package io.akkajob.worker.init;
 
-import io.openjob.common.constant.ProtocolTypeEnum;
-import io.openjob.common.request.WorkerStartRequest;
-import io.openjob.common.response.ServerWorkerStartResponse;
-import io.openjob.common.util.FutureUtil;
-import io.openjob.worker.OpenjobWorker;
-import io.openjob.worker.util.WorkerUtil;
+import io.akkajob.AkkajobWorker;
+import io.akkajob.common.constant.ProtocolTypeEnum;
+import io.akkajob.common.request.WorkerStartRequest;
+import io.akkajob.common.response.ServerWorkerStartResponse;
+import io.akkajob.common.util.FutureUtil;
+import io.akkajob.worker.util.WorkerUtil;
 import lombok.extern.slf4j.Slf4j;
 
-/**
- * @author stelin swoft@qq.com
- * @since 1.0.0
- */
 @Slf4j
 public class WorkerRegister {
 
-    private final OpenjobWorker openjobWorker;
+    private final AkkajobWorker akkajobWorker;
 
-    public WorkerRegister(OpenjobWorker openjobWorker) {
-        this.openjobWorker = openjobWorker;
+    public WorkerRegister(AkkajobWorker openjobWorker) {
+        this.akkajobWorker = openjobWorker;
     }
 
     /**
@@ -33,8 +29,10 @@ public class WorkerRegister {
         startReq.setProtocolType(ProtocolTypeEnum.AKKA.getType());
 
         try {
-            ServerWorkerStartResponse response = FutureUtil.mustAsk(WorkerUtil.getServerWorkerActor(), startReq, ServerWorkerStartResponse.class, 15000L);
-            log.info("Register worker success. serverAddress={} workerAddress={}", serverAddress, WorkerConfig.getWorkerAddress());
+            ServerWorkerStartResponse response = FutureUtil.mustAsk(WorkerUtil.getServerWorkerActor(),
+                    startReq, ServerWorkerStartResponse.class, 15000L);
+            log.info("Register worker success. serverAddress={} workerAddress={}", serverAddress,
+                    WorkerConfig.getWorkerAddress());
 
             // Do register.
             this.doRegister(response);
@@ -50,6 +48,6 @@ public class WorkerRegister {
      * @param response response
      */
     private void doRegister(ServerWorkerStartResponse response) {
-        this.openjobWorker.getWorkerContext().init(response.getAppId(), response.getWorkerAddressList());
+        this.akkajobWorker.getWorkerContext().init(response.getAppId(), response.getWorkerAddressList());
     }
 }
